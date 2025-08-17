@@ -138,22 +138,22 @@ Make sure you have the following installed on your system:
 
 ## 📁 Project Structure
 .
-├── backend/
-│   ├── .env                # Stores API keys (created by you)
-│   ├── venv/               # Virtual environment directory
-│   ├── main.py             # FastAPI application logic
-│   ├── spam_classifier.pkl # Pre-trained spam detection model
-│   └── requirements.txt    # Python dependencies
-│
-└── frontend/
-    ├── public/
-    │   └── index.html
-    ├── src/
-    │   ├── App.css
-    │   ├── App.js          # Main React component
-    │   └── index.js
-    ├── package.json
-    └── ...
++-- backend/
+|   +-- .env
+|   +-- venv/
+|   +-- main.py
+|   +-- spam_classifier.pkl
+|   +-- requirements.txt
+|
++-- frontend/
+    +-- public/
+    |   +-- index.html
+    +-- src/
+    |   +-- App.css
+    |   +-- App.js
+    |   +-- index.js
+    +-- package.json
+    +-- ...
 ---
 
 ##  API Endpoint
