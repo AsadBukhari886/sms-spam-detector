@@ -157,47 +157,15 @@ Make sure you have the following installed on your system:
     +-- package.json
     +-- ...
 ---
--
----
-
-## 🔌 API Endpoint
-
-The application exposes one primary API endpoint for analysis.
-
-### `POST /analyze`
-Analyzes a given text for spam and AI content.
-
-#### Request Body:
-```json
-{
-  "text": "Your message text goes here."
-}
-
-{
-  "spam_detection": {
-    "result": "Not Spam",
-    "prediction_code": 0
-  },
-  "ai_detection": {
-    "percentage": 15
-  }
-}
-
-{
-  "spam_detection": {
-    "result": "Not Spam",
-    "prediction_code": 0
-  },
-  "ai_detection": {
-    "percentage": "Error: Invalid API Key."
-  }
 
 ---
 
 ## 🧠 How It Works
 
--   **Spam Detection:** The backend uses a `scikit-learn` pipeline loaded from `spam_classifier.pkl`. This model was trained on a dataset like the SMS Spam Collection using a TF-IDF vectorizer and a classifier (e.g., Naive Bayes). The input text is cleaned and transformed before being fed to the model for prediction.
+### Spam Detection
+The backend uses a `scikit-learn` pipeline loaded from `spam_classifier.pkl`. This model was trained on a dataset like the SMS Spam Collection using a TF-IDF vectorizer and a classifier (e.g., Naive Bayes). The input text is cleaned and transformed before being fed to the model for prediction.
 
--   **AI Content Detection:** When a request is made, the backend sends the raw text to the Groq API. A carefully crafted system prompt instructs the Llama 3 model to act as an AI detector and return only a number from 0-100, representing the probability of the text being AI-generated.
+### AI Content Detection
+When a request is made, the backend sends the raw text to the Groq API. A carefully crafted system prompt instructs the Llama 3 model to act as an AI detector and return only a number from 0-100, representing the probability of the text being AI-generated.
 
 ---
