@@ -5,8 +5,8 @@ A real-time web application to analyze text messages for spam and detect AI-gene
 <br/>
 
 <p align="center">
-  <img width="571" height="410" alt="image" src="https://github.com/user-attachments/assets/34912710-61ec-41f9-90ab-91a99b8c8a10" />
-  <img alt="App Screenshot - Spam" src="https://github.com/user-attachments/assets/4404cff0-3ae3-49e5-8149-f43e481dc70f" width="48%" />
+ <img width="508" height="408" alt="image" src="https://github.com/user-attachments/assets/cbbcb5b6-ac8d-4f0f-9d4e-dd7ce49c5a38" />
+ <img alt="App Screenshot - Spam" src="https://github.com/user-attachments/assets/4404cff0-3ae3-49e5-8149-f43e481dc70f" width="48%" />
 </p>
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
@@ -103,8 +103,8 @@ Make sure you have the following installed on your system:
     # Install the required Python packages
     pip install -r requirements.txt
 
-    # Create a .env file for your API key (if .env.example exists)
-    # cp .env.example .env 
+    # Create a .env file for your API key
+    # cp .env.example .env  (if you have an example file)
     ```
     Now, create and open a `.env` file and add your Groq API key:
     ```.env
@@ -137,3 +137,62 @@ Make sure you have the following installed on your system:
 ---
 
 ## 📁 Project Structure
+.
+├── backend/
+│ ├── .env # Stores API keys (created by you)
+│ ├── venv/ # Virtual environment directory
+│ ├── main.py # FastAPI application logic
+│ ├── spam_classifier.pkl # Pre-trained spam detection model
+│ └── requirements.txt # Python dependencies
+│
+└── frontend/
+├── public/
+│ └── index.html
+├── src/
+│ ├── App.css
+│ ├── App.js # Main React component
+│ └── index.js
+├── package.json
+└── ...
+
+---
+
+##  API Endpoint
+
+The application exposes one primary API endpoint for analysis.
+
+### `POST /analyze`
+Analyzes a given text for spam and AI content.
+
+#### Request Body:
+```json
+{
+  "text": "Your message text goes here."
+}
+Success Response (200 OK):
+code
+JSON
+{
+  "spam_detection": {
+    "result": "Not Spam",
+    "prediction_code": 0
+  },
+  "ai_detection": {
+    "percentage": 15
+  }
+}
+Error Response (AI Detection Failure):
+code
+JSON
+{
+  "spam_detection": {
+    "result": "Not Spam",
+    "prediction_code": 0
+  },
+  "ai_detection": {
+    "percentage": "Error: Invalid API Key."
+  }
+}
+🧠 How It Works
+Spam Detection: The backend uses a scikit-learn pipeline loaded from spam_classifier.pkl. This model was trained on a dataset like the SMS Spam Collection using a TF-IDF vectorizer and a classifier (e.g., Naive Bayes). The input text is cleaned and transformed before being fed to the model for prediction.
+AI Content Detection: When a request is made, the backend sends the raw text to the Groq API. A carefully crafted system prompt instructs the Llama 3 model to act as an AI detector and return only a number from 0-100, representing the probability of the text being AI-generated.
