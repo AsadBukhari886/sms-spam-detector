@@ -158,10 +158,16 @@ Make sure you have the following installed on your system:
     +-- ...
 ---
 
-## 🧠 **How It Works**
-Spam Detection
-The backend uses a scikit-learn pipeline loaded from spam_classifier.pkl. This model was trained on a dataset like the SMS Spam Collection using a TF-IDF vectorizer and a classifier (e.g., Naive Bayes). The input text is cleaned and transformed before being fed to the model for prediction.
-AI Content Detection
-When a request is made, the backend sends the raw text to the Groq API. A carefully crafted system prompt instructs the Llama 3 model to act as an AI detector and return only a number from 0-100, representing the probability of the text being AI-generated.
+---
+
+## 🧠 How It Works
+
+Is project ke do ahem hissay hain:
+
+### 🛡️ Spam Detection
+The backend uses a `scikit-learn` pipeline loaded from `spam_classifier.pkl`. This model was trained on a dataset like the SMS Spam Collection using a TF-IDF vectorizer and a classifier (e.g., Naive Bayes). The input text is cleaned and transformed before being fed to the model for prediction.
+
+### 🤖 AI Content Detection
+When a request is made, the backend sends the raw text to the `Groq API`. A carefully crafted system prompt instructs the `Llama 3` model to act as an AI detector and return only a number from 0-100, representing the probability of the text being AI-generated.
 
 ---
